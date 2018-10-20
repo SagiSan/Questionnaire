@@ -1,0 +1,22 @@
+{
+  "name": "questionnaire",
+  "version": "1.0.0",
+  "description": "project for web engineering subject at university",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SagiSan/Questionnaire.git"
+  },
+  "author": "Samir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SagiSan/Questionnaire/issues"
+  },
+  "homepage": "https://github.com/SagiSan/Questionnaire#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
