@@ -1,7 +1,11 @@
 <div>
-    <button ng-click='createQuestionnaire()'>Create New Questionnaire</button>
+  <button ng-click="createQuestionnaire()">Create New Questionnaire</button>
 
-    <div class='list' ng-repeat='(key, value) in questionnairesList'>
-        <p>{{value}}</p>
-    </div>
+  <div class="list">
+    <p ng-repeat="questionnaire in questionnairesList">
+      <span>title: </span>{{ questionnaire.title }} <br />
+      <span>Description: </span>{{ questionnaire.description }} <br />
+      <a href='' ng-click="open(questionnaire._id)">Open</a>
+    </p>
+  </div>
 </div>

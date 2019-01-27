@@ -4,9 +4,26 @@ main.controller("questionnairesListController", function(
   $location
 ) {
   $scope.questionnairesList = [];
-  $scope.title = "";
   $scope.createQuestionnaire = function() {
-    $scope.questionnairesList.push($scope.title);
     $location.path("/create");
   };
+  $scope.getQuestionnaires = function() {
+    $http({
+      method: "GET",
+      url: "/questionnaire"
+    }).then(
+      function successCallback(response) {
+        console.log(response.data);
+        $scope.questionnairesList = response.data;
+      },
+      function errorCallback(response) {
+        console.log(response.data);
+      }
+    );
+  };
+  $scope.open = function(id) {
+    console.log(id);
+    $location.path("view/" + id);
+  };
+  $scope.getQuestionnaires();
 });

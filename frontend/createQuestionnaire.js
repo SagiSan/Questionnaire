@@ -17,11 +17,29 @@ main.controller("createQuestionnaireController", function(
   };
   $scope.addQuestion = function() {
     $scope.questionList.push({
-      question: $scope.question,
+      text: $scope.question,
       answers: $scope.answers
     });
     $scope.question = "";
     $scope.answer = "";
     $scope.answers = [];
+  };
+  $scope.save = function() {
+    $http({
+      method: "POST",
+      url: "/questionnaire",
+      data: {
+        title: $scope.title,
+        description: $scope.description,
+        questionList: $scope.questionList
+      }
+    }).then(
+      function successCallback(response) {
+        console.log(response);
+      },
+      function errorCallback(response) {
+        console.log(response);
+      }
+    );
   };
 });

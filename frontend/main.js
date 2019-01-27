@@ -14,6 +14,11 @@ main.config([
       .when("/create", {
         templateUrl: "/createQuestionnaire.html",
         controller: "createQuestionnaireController"
+      })
+      .when("/view/:id", {
+        templateUrl: "viewQuestionnaire.html",
+        controller: 'viewQuestionnaireController',
+        name: 'viewQuestionnaire'
       });
   }
 ]);
