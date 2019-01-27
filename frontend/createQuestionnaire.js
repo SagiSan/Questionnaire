@@ -31,7 +31,8 @@ main.controller("createQuestionnaireController", function(
       data: {
         title: $scope.title,
         description: $scope.description,
-        questionList: $scope.questionList
+        questionList: $scope.questionList,
+        headers: tokenWrapper()
       }
     }).then(
       function successCallback(response) {

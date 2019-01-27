@@ -10,6 +10,7 @@ main.controller("viewQuestionnaireController", function(
     $http({
       method: "GET",
       url: "/questionnaire/" + $routeParams.id,
+      headers: tokenWrapper()
     }).then(
       function successCallback(response) {
         console.log(response.data);
@@ -25,6 +26,7 @@ main.controller("viewQuestionnaireController", function(
       method: "POST",
       url: "/submission/" + $routeParams.id,
       data: $scope.answers,
+      headers: tokenWrapper()
     }).then(
       function successCallback(response) {
       },
