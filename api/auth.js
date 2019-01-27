@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 
 const User = require("../models/userModel");
 const Token = require('../models/tokenModel');
@@ -15,7 +14,8 @@ router.post('/login', async (req, res) => {
             error: "User not found"
         });
     }
-    if (!bcrypt.compareSync(req.body.password, user.password))
+    // if (!bcrypt.compareSync(req.body.password, user.password))
+    if (req.body.password != user.password)
     {
         return res.send({
             error: "Invalid password"
@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 router.post("/register", async (req, res) => {
     req.body.is_admin = false;
     try {
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
+        // req.body.password = bcrypt.hashSync(req.body.password, 10);
         await User.create(req.body);
         res.send(true);
     } catch(err) {
