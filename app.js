@@ -21,6 +21,7 @@ app.use("/", express.static("frontend"));
 
 app.use("/auth", require('./api/auth'));
 app.use("/questionnaire", require('./api/questionnaire'));
+app.use("/submission", require('./api/submission'));
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
