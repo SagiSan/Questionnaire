@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-    req.body.is_admin = false;
+    req.body.isAdmin = false;
     try {
         // req.body.password = bcrypt.hashSync(req.body.password, 10);
         await User.create(req.body);
