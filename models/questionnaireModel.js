@@ -4,8 +4,7 @@ var Schema = mongoose.Schema;
 var questionnaireSchema = new Schema({
   title: String,
   description: String,
-  questionList: [{ type: Schema.Types.ObjectId, ref: "question" }],
-  comments: [{ type: Schema.Types.ObjectId, ref: "comment" }]
+  questionList: [{ type: Schema.Types.ObjectId, ref: "question" }]
 });
 
 module.exports = mongoose.model("questionnaire", questionnaireSchema);
