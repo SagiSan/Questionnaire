@@ -1,1 +1,25 @@
-<div>selam alejk</div>
+<div ng-if="questionnaire">
+  <form ng-submit="onSubmit()">
+    <p>Title: {{ questionnaire.title }}</p>
+    <p>Description: {{ questionnaire.description }}</p>
+    <ul>
+      <li ng-repeat="question in questionnaire.questionList">
+        <p>{{ question.text }}</p>
+        <ul>
+          <li ng-repeat="answer in question.answers">
+            <input
+              ng-model="answers[$parent.$index]"
+              required
+              type="radio"
+              id="{{ answer._id }}"
+              name="{{ question._id }}"
+              value="{{ answer._id }}"
+            /><label for="{{ answer._id }}">{{ answer.text }}</label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <br />
+    <button>Submit</button>
+  </form>
+</div>
