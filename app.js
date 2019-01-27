@@ -1,10 +1,26 @@
-var express = require('express');
-var app = express();
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+require("./models/answerModel");
+require("./models/commentModel");
+require("./models/questionModel");
+require("./models/questionnaireModel");
+require("./models/userModel");
+require("dotenv").config();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+const port = process.env.PORT || 2000;
 
-app.listen(process.env.PORT, function () {
-  console.log('Example app listening on port 3000!');
+mongoose.connect(
+  process.env.DB_STRING,
+  { useNewUrlParser: true }
+);
+
+app.use(bodyParser.json());
+
+app.use("/", express.static("frontend"));
+// app.use('/api/movie', require('./api/routes/movieRoutes'))
+
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });
