@@ -18,10 +18,9 @@ app.use(bodyParser.json());
 
 app.use("/", express.static("frontend"));
 
-app.use(Middleware.authentication);
-
 app.use("/auth", require('./api/auth'));
 
+app.use(Middleware.authentication);
 app.use(Middleware.authenticated);
 
 app.use("/questionnaire", require('./api/questionnaire'));
