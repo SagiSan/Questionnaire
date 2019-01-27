@@ -6,7 +6,7 @@ var Question = require('../models/questionModel');
 var Answer = require('../models/answerModel');
 var Utils = require('../utils');
 
-router.get('/', async (_, res) => {
+const getAllQuestions = async (_, res) => {
     try {
         res.send(await Questionnaire.find()
                     .populate({
@@ -19,7 +19,9 @@ router.get('/', async (_, res) => {
     } catch(err) {
         Utils.handleException(res, err);
     }
-});
+}
+
+router.get('/', getAllQuestions);
 
 router.post('/', async (req, res) => {
     const session = await Questionnaire.startSession();
@@ -40,6 +42,26 @@ router.post('/', async (req, res) => {
         res.send(created);
     } catch(err) {
         session.abortTransaction();
+        Utils.handleException(res, err);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        await Questionnaire.deleteOne({_id: req.params.id});
+        getAllQuestions(req, res);
+    } catch(err) {
+        Utils.handleException(res, err);
+    }
+});
+
+router.put('/:id', async (req, res) => {
+    try {
+        res.send(await Questionnaire.replaceOne(
+            {_id: req.params.id},
+            req.body
+        ));
+    } catch(err) {
         Utils.handleException(res, err);
     }
 })
