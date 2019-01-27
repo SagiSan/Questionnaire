@@ -18,11 +18,10 @@ module.exports = {
             }
 
             // Find token in database
-            const foundToken = await Token.findOne({ token: jwtToken });
+            const foundToken = await Token.findOne({ token: jwtToken }).populate('user');
             if (foundToken) {
                 req.user = foundToken.user;
-                console.log("Authenticated user");
-                console.log(foundToken.user);
+                console.log("Authenticated user " + foundToken.user.username);
                 return next();
             } else {
                 console.err("Token not found in database");
@@ -31,6 +30,14 @@ module.exports = {
             
         } else {
             return next();
+        }
+    },
+
+    authenticated: (req, res, next) => {
+        if (req.user) {
+            next();
+        } else {
+            res.status(401).send("unauthenticated");
         }
     }
 }

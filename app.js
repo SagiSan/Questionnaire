@@ -2,10 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-require("./models/answerModel");
-require("./models/questionModel");
-require("./models/questionnaireModel");
-require("./models/userModel");
+
+const Middleware = require('./middleware');
+
 require("dotenv").config();
 
 const port = process.env.PORT || 2000;
@@ -19,7 +18,12 @@ app.use(bodyParser.json());
 
 app.use("/", express.static("frontend"));
 
+app.use(Middleware.authentication);
+
 app.use("/auth", require('./api/auth'));
+
+app.use(Middleware.authenticated);
+
 app.use("/questionnaire", require('./api/questionnaire'));
 app.use("/submission", require('./api/submission'));
 
