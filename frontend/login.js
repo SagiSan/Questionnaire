@@ -12,8 +12,8 @@ main.controller("loginController", function($scope, $http, $location) {
       }
     }).then(
       function successCallback(response) {
-        localStorage.setItem("is_admin", response.data.isAdmin);
-        localStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("is_admin", response.data.isAdmin);
+        sessionStorage.setItem("token", response.data.token);
         $location.path("/home");
       },
       function errorCallback(response) {

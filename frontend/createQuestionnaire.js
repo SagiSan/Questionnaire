@@ -35,7 +35,7 @@ main.controller("createQuestionnaireController", function(
       }
     }).then(
       function successCallback(response) {
-          $location.path('/home');
+        $location.path("/home");
         console.log(response);
       },
       function errorCallback(response) {
@@ -43,4 +43,5 @@ main.controller("createQuestionnaireController", function(
       }
     );
   };
+  auth($location);
 });

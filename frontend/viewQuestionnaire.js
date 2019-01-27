@@ -23,18 +23,21 @@ main.controller("viewQuestionnaireController", function(
   };
   $scope.onSubmit = function() {
     $http({
-        method: "POST",
-        url: "/submission/" + $routeParams.id,
-        data: []
-      }).then(
-        function successCallback(response) {
-          console.log(response.data);
-          $scope.questionnaire = response.data;
-        },
-        function errorCallback(response) {
-          console.log(response.data);
-        }
-      );
+      method: "POST",
+      url: "/submission/" + $routeParams.id,
+      data: $scope.answers
+    }).then(
+      function successCallback(response) {
+        console.log(response.data);
+      },
+      function errorCallback(response) {
+        console.log(response.data);
+      }
+    );
+    $location.path("/home");
+  };
+
+  if (auth($location)) {
+    $scope.getQuestionnaire();
   }
-  $scope.getQuestionnaire();
 });

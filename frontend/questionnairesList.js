@@ -24,5 +24,7 @@ main.controller("questionnairesListController", function(
   $scope.open = function(id) {
     $location.path("view/" + id);
   };
-  $scope.getQuestionnaires();
+  if (auth($location)) {
+    $scope.getQuestionnaires();
+  }
 });

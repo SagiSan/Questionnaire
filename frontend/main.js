@@ -7,6 +7,10 @@ main.config([
         templateUrl: "/login.html",
         controller: "loginController"
       })
+      .when("/login", {
+        templateUrl: "/login.html",
+        controller: "loginController"
+      })
       .when("/home", {
         templateUrl: "/questionnairesList.html",
         controller: "questionnairesListController"
@@ -17,8 +21,8 @@ main.config([
       })
       .when("/view/:id", {
         templateUrl: "viewQuestionnaire.html",
-        controller: 'viewQuestionnaireController',
-        name: 'viewQuestionnaire'
+        controller: "viewQuestionnaireController",
+        name: "viewQuestionnaire"
       });
   }
 ]);
