@@ -6,14 +6,14 @@ var Utils = require('../utils');
 
 router.post('/:id', async (req, res) => {
     try {
-        res.send(
-            await Submission.create({
-                questionnaire: req.params.id,
-                answers: req.body,
-                submittedBy: req.user
-            })
-        );
-        // TODO: add submission to req.user.doneQuestionnaires
+        req.user.doneQuestionnaires.push(req.params.id);
+        await req.user.save();
+        await Submission.create({
+            questionnaire: req.params.id,
+            answers: req.body,
+            submittedBy: req.user
+        });
+        res.send(true);
     } catch(err) {
         Utils.handleException(res, err);
     }

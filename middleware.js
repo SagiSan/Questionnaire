@@ -21,7 +21,6 @@ module.exports = {
             const foundToken = await Token.findOne({ token: jwtToken }).populate('user');
             if (foundToken) {
                 req.user = foundToken.user;
-                console.log("Authenticated user " + foundToken.user.username);
                 return next();
             } else {
                 console.err("Token not found in database");

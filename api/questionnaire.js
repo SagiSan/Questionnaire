@@ -15,9 +15,15 @@ const populateQuestion = (command) => {
     });
 }
 
-const getAllQuestions = async (_, res) => {
+const getAllQuestions = async (req, res) => {
     try {
-        res.send(await populateQuestion(Questionnaire.find()));
+        let questionnaires = await populateQuestion(Questionnaire.find());
+        questionnaires = JSON.parse(JSON.stringify(questionnaires));
+        const doneQuestionnaires = JSON.parse(JSON.stringify(req.user.doneQuestionnaires));
+        for (let questionnaire of questionnaires) {
+            questionnaire.done = doneQuestionnaires.indexOf(questionnaire._id) != -1;
+        }
+        res.send(questionnaires);
     } catch(err) {
         Utils.handleException(res, err);
     }
