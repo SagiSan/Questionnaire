@@ -22,7 +22,6 @@ main.controller("questionnairesListController", function(
     );
   };
   $scope.open = function(id) {
-    console.log(id);
     $location.path("view/" + id);
   };
   $scope.getQuestionnaires();
