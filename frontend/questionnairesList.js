@@ -10,7 +10,8 @@ main.controller("questionnairesListController", function(
   $scope.getQuestionnaires = function() {
     $http({
       method: "GET",
-      url: "/questionnaire"
+      url: "/questionnaire",
+      headers: tokenWrapper()
     }).then(
       function successCallback(response) {
         console.log(response.data);

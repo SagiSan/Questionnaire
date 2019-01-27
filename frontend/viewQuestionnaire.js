@@ -7,10 +7,9 @@ main.controller("viewQuestionnaireController", function(
   $scope.questionnaire = {};
   $scope.answers = [];
   $scope.getQuestionnaire = function() {
-    console.log($routeParams.id);
     $http({
       method: "GET",
-      url: "/questionnaire/" + $routeParams.id
+      url: "/questionnaire/" + $routeParams.id,
     }).then(
       function successCallback(response) {
         console.log(response.data);
@@ -25,13 +24,11 @@ main.controller("viewQuestionnaireController", function(
     $http({
       method: "POST",
       url: "/submission/" + $routeParams.id,
-      data: $scope.answers
+      data: $scope.answers,
     }).then(
       function successCallback(response) {
-        console.log(response.data);
       },
       function errorCallback(response) {
-        console.log(response.data);
       }
     );
     $location.path("/home");

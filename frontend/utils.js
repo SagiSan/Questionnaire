@@ -5,3 +5,9 @@ function auth($location) {
   }
   return true;
 }
+
+function tokenWrapper() {
+  if (sessionStorage.getItem("token")) {
+    return { Authorization: "Bearer " + sessionStorage.getItem("token") };
+  }
+}
