@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require("./models/answerModel");
-require("./models/commentModel");
 require("./models/questionModel");
 require("./models/questionnaireModel");
 require("./models/userModel");
