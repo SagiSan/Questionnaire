@@ -12,8 +12,8 @@ module.exports = {
             try {
                 jwt.verify(jwtToken, Utils.secret);
             } catch(err) {
-                console.err("Token verification failed");
-                console.err(err);
+                console.error("Token verification failed");
+                console.error(err);
                 return next();
             }
 
@@ -23,11 +23,12 @@ module.exports = {
                 req.user = foundToken.user;
                 return next();
             } else {
-                console.err("Token not found in database");
+                console.error("Token not found in database");
                 return next();
             }
             
         } else {
+            console.error("token not sent");
             return next();
         }
     },

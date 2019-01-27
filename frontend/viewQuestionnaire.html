@@ -1,25 +1,32 @@
-<div ng-if="questionnaire">
+<div ng-if="questionnaire" class="card">
   <form ng-submit="onSubmit()">
-    <p>Title: {{ questionnaire.title }}</p>
-    <p>Description: {{ questionnaire.description }}</p>
-    <ul>
+    <p class="card-title text-center">{{ questionnaire.title }}</p>
+    <p class="card col-8 offset-2">{{ questionnaire.description }}</p>
+    <ol>
       <li ng-repeat="question in questionnaire.questionList">
         <p>{{ question.text }}</p>
-        <ul>
+        <ul style='list-style: none' class='p-0'>
           <li ng-repeat="answer in question.answers">
-            <input
-              ng-model="answers[$parent.$index]"
-              required
-              type="radio"
-              id="{{ answer._id }}"
-              name="{{ question._id }}"
-              value="{{ answer._id }}"
-            /><label for="{{ answer._id }}">{{ answer.text }}</label>
+            <div class="input-group col-3">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input
+                    ng-model="answers[$parent.$index]"
+                    required
+                    type="radio"
+                    id="{{ answer._id }}"
+                    name="{{ question._id }}"
+                    value="{{ answer._id }}"
+                  />
+                </div>
+              </div>
+              <label class="ml-2" for="{{ answer._id }}">{{ answer.text }}</label>
+            </div>
           </li>
         </ul>
       </li>
-    </ul>
+    </ol>
     <br />
-    <button>Submit</button>
+    <button class="btn btn-success m-4">Submit</button>
   </form>
 </div>

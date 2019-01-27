@@ -14,6 +14,7 @@ main.controller("createQuestionnaireController", function(
   };
   $scope.addAnswer = function() {
     $scope.answers.push({ text: $scope.answer });
+    console.log($scope.answer);
   };
   $scope.addQuestion = function() {
     $scope.questionList.push({
@@ -25,14 +26,15 @@ main.controller("createQuestionnaireController", function(
     $scope.answers = [];
   };
   $scope.save = function() {
+    console.log(tokenWrapper());
     $http({
       method: "POST",
       url: "/questionnaire",
+      headers: tokenWrapper(),
       data: {
         title: $scope.title,
         description: $scope.description,
-        questionList: $scope.questionList,
-        headers: tokenWrapper()
+        questionList: $scope.questionList
       }
     }).then(
       function successCallback(response) {

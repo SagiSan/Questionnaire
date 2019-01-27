@@ -1,11 +1,17 @@
-<div>
-  <button ng-click="createQuestionnaire()">Create New Questionnaire</button>
-
-  <div class="list">
-    <p ng-repeat="questionnaire in questionnairesList">
-      <span>title: </span>{{ questionnaire.title }} <br />
-      <span>Description: </span>{{ questionnaire.description }} <br />
-      <a href='' ng-click="open(questionnaire._id)">Open</a>
-    </p>
+<div class="mt-4 p-3">
+  <div class="row">
+    <div
+      class="card col-3 p-3 m-2"
+      ng-repeat="questionnaire in questionnairesList"
+    >
+      <h5 class="card-title">{{ questionnaire.title }}</h5>
+      <p class="card-text">{{ questionnaire.description }}</p>
+      <button class="btn btn-info" ng-click="open(questionnaire._id)">
+        Open
+      </button>
+    </div>
   </div>
+  <button class="btn btn-primary mt-3" ng-click="createQuestionnaire()">
+    Create Questionnaire
+  </button>
 </div>
