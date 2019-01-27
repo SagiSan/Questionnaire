@@ -19,7 +19,8 @@ mongoose.connect(
 app.use(bodyParser.json());
 
 app.use("/", express.static("frontend"));
-// app.use('/api/movie', require('./api/routes/movieRoutes'))
+
+app.use("/auth", require('./api/auth'));
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
