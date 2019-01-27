@@ -14,7 +14,7 @@ main.controller("loginController", function($scope, $http, $location) {
       function successCallback(response) {
         localStorage.setItem("is_admin", response.data.isAdmin);
         localStorage.setItem("token", response.data.token);
-        console.log(response);
+        $location.path("/home");
       },
       function errorCallback(response) {
         console.log(response);
@@ -30,13 +30,9 @@ main.controller("loginController", function($scope, $http, $location) {
         password: $scope.password
       }
     }).then(
-      function successCallback(response) {
-          $location.path("/home");
-        console.log(response);
-      },
+      function successCallback(response) {},
       function errorCallback(response) {
         $location.path("/login");
-        console.log(response);
       }
     );
   };

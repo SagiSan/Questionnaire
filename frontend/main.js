@@ -8,7 +8,12 @@ main.config([
         controller: "loginController"
       })
       .when("/home", {
-        template: "hello world"
+        templateUrl: "/questionnairesList.html",
+        controller: "questionnairesListController"
+      })
+      .when("/create", {
+        templateUrl: "/createQuestionnaire.html",
+        controller: "createQuestionnaireController"
       });
   }
 ]);

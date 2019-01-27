@@ -1,3 +1,7 @@
 <div>
-    <button>Create New Questionnaire</button>
+    <button ng-click='createQuestionnaire()'>Create New Questionnaire</button>
+
+    <div class='list' ng-repeat='(key, value) in questionnairesList'>
+        <p>{{value}}</p>
+    </div>
 </div>

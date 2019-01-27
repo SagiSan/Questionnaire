@@ -1,0 +1,21 @@
+<div>
+  <input type="text" placeholder="Title" ng-model="title" />
+  <p>{{ title }}</p>
+  <textarea ng-model='description' placeholder="description"></textarea>
+  <ol>
+    <li ng-repeat="question in questionList">
+      <p>{{ question.question }}</p>
+      <ul>
+        <li ng-repeat="answer in question.answers">{{ answer.text }}</li>
+      </ul>
+    </li>
+  </ol>
+  Question: <input type="text" placeholder="question" ng-model="question" />
+  <br />
+  <ul>
+    <li ng-repeat="answer in answers">{{ answer.text }}</li>
+  </ul>
+  <input type="text" placeholder="answer" ng-model="answer" />
+  <button ng-click="addAnswer()">Add Answer</button>
+  <button ng-click="addQuestion()">Save Question</button>
+</div>
