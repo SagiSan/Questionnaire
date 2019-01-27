@@ -21,7 +21,7 @@ main.controller("loginController", function($scope, $http, $location) {
       }
     );
   };
-  $scope.signIn = function() {
+  $scope.signUp = function() {
     $http({
       method: "POST",
       url: "/auth/register",
