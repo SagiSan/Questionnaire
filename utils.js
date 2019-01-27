@@ -2,10 +2,10 @@ module.exports = {
     handleException: (res, err) => {
         if (err.message) {
             res.send({
-                error: err.message
+                error: err.message,
+                details: err
             });
         } else {
-            console.error(err);
             res.send({
                 error: "Something went wrong, look at console"
             });

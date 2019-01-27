@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use("/", express.static("frontend"));
 
 app.use("/auth", require('./api/auth'));
+app.use("/questionnaire", require('./api/questionnaire'));
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
