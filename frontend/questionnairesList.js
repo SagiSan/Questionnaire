@@ -15,7 +15,7 @@ main.controller("questionnairesListController", function(
     }).then(
       function successCallback(response) {
         console.log(response.data);
-        $scope.questionnairesList = response.data;
+        $scope.questionnairesList = response.data.filter(q => q.done);
       },
       function errorCallback(response) {
         console.log(response.data);
@@ -30,7 +30,7 @@ main.controller("questionnairesListController", function(
     }).then(
       function successCallback(response) {
         console.log(response.data);
-        $scope.questionnairesList = response.data;
+        $scope.questionnairesList = response.data.filter(q => q.done);
       },
       function errorCallback(response) {
         console.log(response.data);
