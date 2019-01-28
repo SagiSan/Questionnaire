@@ -22,6 +22,21 @@ main.controller("questionnairesListController", function(
       }
     );
   };
+  $scope.deleteQuestionnaire = function(id) {
+    $http({
+      method: "DELETE",
+      url: "/questionnaire/" + id,
+      headers: tokenWrapper()
+    }).then(
+      function successCallback(response) {
+        console.log(response.data);
+        $scope.questionnairesList = response.data;
+      },
+      function errorCallback(response) {
+        console.log(response.data);
+      }
+    );
+  };
   $scope.open = function(id) {
     $location.path("view/" + id);
   };
