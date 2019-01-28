@@ -13,7 +13,6 @@ main.controller("viewQuestionnaireController", function(
       headers: tokenWrapper()
     }).then(
       function successCallback(response) {
-        console.log(response.data);
         $scope.questionnaire = response.data;
       },
       function errorCallback(response) {

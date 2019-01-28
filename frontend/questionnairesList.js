@@ -14,7 +14,6 @@ main.controller("questionnairesListController", function(
       headers: tokenWrapper()
     }).then(
       function successCallback(response) {
-        console.log(response.data);
         $scope.questionnairesList = response.data.filter(q => !q.done);
       },
       function errorCallback(response) {
@@ -29,7 +28,6 @@ main.controller("questionnairesListController", function(
       headers: tokenWrapper()
     }).then(
       function successCallback(response) {
-        console.log(response.data);
         $scope.questionnairesList = response.data.filter(q => !q.done);
       },
       function errorCallback(response) {
